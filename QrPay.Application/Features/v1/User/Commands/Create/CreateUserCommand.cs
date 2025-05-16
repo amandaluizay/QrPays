@@ -32,6 +32,7 @@ namespace QrPay.Application.Features.v1.User.Commands.Create
             if(existingEmail != null)
             {
                 return ResponseResult.Fail("User already exists");
+                ;
             }
 
 
