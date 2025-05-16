@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QrPay.Database\QrPay.Database.csproj" />
+    <ProjectReference Include="..\QrPay.Domain\QrPay.Domain.csproj" />
+    <ProjectReference Include="..\QrPay.Shared\QrPay.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\v1\User\Commands\Login\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,7 @@
+dotnet tool install --global dotnet-ef
+
+dotnet ef migrations add Initial --context QrPayDbContext --project QrPay.Database\QrPay.Database.csproj --startup-project QrPay.API\QrPay.API.csproj
+
+dotnet ef database update --context QrPayDbContext --project QrPay.Database\QrPay.Database.csproj --startup-project QrPay.API\QrPay.API.csproj
+
+dotnet ef migrations Remove --context QrPayDbContext --project QrPay.Database\QrPay.Database.csproj --startup-project QrPay.API\QrPay.API.csproj
