@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using QrPay.Application.Requests;
 using QrPay.Domain.Repository;
-using QrPay.Shared.Configuration;
 using QrPay.Shared.Interfaces;
 using QrPay.Shared.Models;
+using QrPay.Shared.Services;
 using System.Text;
 using userEntity = QrPay.Domain.Entities.User;
 
@@ -31,9 +31,9 @@ namespace QrPay.Application.Features.v1.User.Commands.Create
 
             if(existingEmail != null)
             {
-                return ResponseResult.Fail("User already exists");
-                ;
+                return ResponseResult.Fail("A User with this email already exists");
             }
+
 
 
         }
