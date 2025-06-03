@@ -1,5 +1,8 @@
 ﻿using System.Drawing;
+using TestQr;
 using ZXing.Windows.Compatibility;
+
+var teste = QrCodeGenerator.Teste;
 
 var path = @"C:\Users\amanda\Downloads\qrCode.png";
 

@@ -42,16 +42,4 @@ namespace QrPay.Shared.Models
         }
     }
 
-    public class ResponseFileResult : ResponseResult
-    {
-        public byte[]? File { get; set; }
-        public string? FileName { get; set; }
-        public string? ContentType { get; set; }
-
-        public static ResponseFileResult Sucess(byte[]? file, string? contentType = null)
-        {
-            return new ResponseFileResult { ContentType = contentType, File = file, IsSuccess = true, Message = "Everything work as expected" };
-        }
-    }
-
 }

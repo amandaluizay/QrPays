@@ -5,6 +5,7 @@ namespace TestQr
 {
     public static class QrCodeGenerator
     {
+        public static string Teste { get; set; } = "teste";
         public static byte[] GenerateImage(string url)
         {
             var qrGenerator = new QRCodeGenerator();

@@ -10,18 +10,18 @@ using System.Text.Json.Serialization;
 
 namespace QrPay.Application.Features.v1.QrCode.Commands.Create
 {
-    public record class CreateQrPaymentCommand : TransactionRequest, IRequest<IResponseResult>
+    public record class CreateQrPaymentCommand : TransactionRequest, IRequest<ResponseFileResult>
     {
         [JsonIgnore]
         public Guid SenderUserId { get; set; }
     }
 
-    public class CreateQrPaymentCommandHandler(IQrCodeService qrCodeService, IRepository<Account> accountRepository) : IRequestHandler<CreateQrPaymentCommand, IResponseResult>
+    public class CreateQrPaymentCommandHandler(IQrCodeService qrCodeService, IRepository<Account> accountRepository) : IRequestHandler<CreateQrPaymentCommand, ResponseFileResult>
     {
         private readonly IQrCodeService _qrCodeService = qrCodeService;
         private readonly IRepository<Account> _accountRepository = accountRepository;
 
-        public async Task<IResponseResult> Handle(CreateQrPaymentCommand command, CancellationToken cancellationToken)
+        public async Task<ResponseFileResult> Handle(CreateQrPaymentCommand command, CancellationToken cancellationToken)
         {
             var account = await _accountRepository.Entities.SingleOrDefaultAsync(x => x.UserId == command.SenderUserId, cancellationToken: cancellationToken);
 
@@ -38,7 +38,7 @@ namespace QrPay.Application.Features.v1.QrCode.Commands.Create
 
             var image = _qrCodeService.GenerateImage(content);
 
-            return ResponseFileResult.Sucess(image);
+            return ResponseFileResult.Sucess(image, "qr.png", "image/png");
         }
     }
 }
