@@ -12,8 +12,10 @@ namespace QrPay.Application.Features.v1.Accounts.Commands.Create
     {
         [JsonIgnore]
         public Guid UserId { get; set; }
-        public string Document { get; set; }
+
+        [JsonIgnore]
         public string Name { get; set; }
+        public string Document { get; set; }
     }
 
     public class CreateAccountCommandHandler(IRepository<Account> accountRepository) : IRequestHandler<CreateAccountCommand, IResponseResult>

@@ -4,7 +4,6 @@ using QrPay.Application.Requests;
 using QrPay.Domain.Repository;
 using QrPay.Shared.Interfaces;
 using QrPay.Shared.Models;
-using QrPay.Shared.Services;
 using System.Text;
 using userEntity = QrPay.Domain.Entities.User;
 
@@ -34,8 +33,16 @@ namespace QrPay.Application.Features.v1.User.Commands.Create
                 return ResponseResult.Fail("A User with this email already exists");
             }
 
+            var token = await _userService.GetTokenAsync(user);
 
+            if (token == null)
+            {
+                return ResponseResult.Fail("Failed to generate token");
+            }
 
+            await userRepository.AddAsync(user, cancellationToken);
+
+            return ResponseResult<string>.Sucess(token);
         }
     }
 }

@@ -16,8 +16,4 @@
     <ProjectReference Include="..\QrPay.Shared\QrPay.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\v1\User\Commands\Login\" />
-  </ItemGroup>
-
 </Project>

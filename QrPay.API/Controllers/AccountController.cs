@@ -18,7 +18,7 @@ namespace QrPay.API.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> CreateAccount([FromBody] CreateAccountCommand command)
         {
-            return await CommandAsync(command with { UserId = _userContext.UserId.GetValueOrDefault()});
+            return await CommandAsync(command with { UserId = _userContext.UserId, Name = _userContext.UserName});
         }
 
         [HttpPost("pay")]
@@ -30,7 +30,7 @@ namespace QrPay.API.Controllers
         [HttpPost("qrCode/generate")]
         public async Task<IActionResult> GenerateQrCode([FromBody] CreateQrPaymentCommand command)
         {
-            return await CommandAsync(command with { SenderUserId = _userContext.UserId.GetValueOrDefault()});
+            return await CommandAsync(command with { SenderUserId = _userContext.UserId});
         }
 
         [HttpPost("qrCode/read")]
@@ -49,7 +49,8 @@ namespace QrPay.API.Controllers
 
             return await CommandAsync(new ReadQrPaymentCommand
             {
-                QrCode = fileBytes
+                QrCode = fileBytes,
+                UserId = _userContext.UserId
             });
         }
     }

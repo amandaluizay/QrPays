@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QrPay.Domain\QrPay.Domain.csproj" />
+    <ProjectReference Include="..\QrPay.Shared\QrPay.Shared.csproj" />
   </ItemGroup>
 
 </Project>
